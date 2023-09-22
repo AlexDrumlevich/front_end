@@ -1,0 +1,50 @@
+
+
+
+html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+body {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    margin: 0;
+    align-self: center;
+}
+
+
+.board{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.line{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.white_cell{
+    background-color: white;
+    border: solid 2px;
+    border-color: black;
+    flex-grow: 1;
+}
+
+.black_cell{
+    background-color: black;
+    flex-grow: 1;
+}
+
+@media (min-aspect-ratio: 1) {
+    body {
+        width: auto;
+        height: 100%;
+        aspect-ratio: 1;
+     
+    }
+}
