@@ -3,6 +3,13 @@ font-face {
     src: url("fonts/LAKESHOR-webfont.svg");
     src: url("fonts/LAKESHOR-webfont.woff");
 }
+
+@font-face {
+    font-family: airstream;
+    src: url("fonts/Airstream-webfont.svg");
+    src: url("fonts/Airstream-webfont.woff")
+}
+
 :root {
     --thumbnails-img-width: 20vw;
     --thumbnails-img-height: 15vw;
@@ -11,6 +18,8 @@ font-face {
 body, html {
     height: 100%;
 }
+
+
 
 body {
     display: flex; 
@@ -34,6 +43,7 @@ body {
     flex-grow: 1;
  }
  .details-container {
+
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -41,7 +51,7 @@ body {
  
  }
  .details-image {
- 
+    
      width: 80vw;
      height: 70vw;
      border-radius: 25%;
@@ -81,10 +91,17 @@ body {
      text-align: center;
      height: var(--thumbnails-title-height);
      background-color: beige;
+     font-family: airstream;
+     font-style: italic;
+     font-size: 2vw;
  }
  .thumbnails-anchor {
     
     text-decoration: none;
+ }
+
+ .thumbnails-item:hover {
+   transform: scale(1.15);
  }
 
  @media (min-width: 560px) {
@@ -114,12 +131,23 @@ body {
     }
 
     .details-container {
+        height: 70%;
         flex-grow: 3;
         margin: 0;
         align-items: center;
         align-self: center;
+       /*position: relative;*/
     }
-
+    .details-image-container {
+        height: 100%;
+        position: relative;
+    }
+    .details-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+ 
     .details-image {
         width: 40vw;
         height: 30vw;
@@ -131,9 +159,13 @@ body {
             font-size: 5em;
         }
 
+      
+
         .details-image {
+            flex-grow: 1;
             width: 66vw;
-            height: 55vw;
+           height: 100%;
+           align-self: center;
         }
 
         .thumbnails-list {
