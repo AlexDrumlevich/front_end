@@ -1,20 +1,63 @@
-const inputElements = document.querySelectorAll(".form-class [name]");
+const inputElementsAdd = document.querySelectorAll("#add_section [name]");
+const inputElementsShowBySalary = document.querySelectorAll("#show_by_salary_section [name]");
 const alertDiv = document.getElementById("alert_div")
 const alertHeader = document.getElementById("alert_header")
 const alertmessage = document.getElementById("allert_message")
+const mainMenuSections = document.getElementsByClassName("main_menu_sections")
+const mainMenuControllButtons = document.querySelectorAll(".control_button")
+const containerEmployeesBySalary = document.getElementById("container_employees_by_salary")
+const containerEmployeesAll = document.getElementById("container_employees_all")
+let employees = []
 
+function show(event) {
+    const button = event.target
+    Array.from(mainMenuControllButtons).forEach(e => e.classList.remove("active_button"))
+    button.classList.add("active_button")
+
+
+    if(button.getAttribute("tag") == "show_all") {
+        showEmployees(employees, containerEmployeesAll)
+    } 
+
+    const mainMenuSectionsArray = Array.from(mainMenuSections)
+    mainMenuSectionsArray.forEach(e => e.hidden = !(e.getAttribute("tag") == button.getAttribute("tag")))
+}
 
 function onSubmit(event) {
     event.preventDefault();
-    console.log("submitted");
-    const employee = Array.from(inputElements).reduce(
-        (res, cur) => {
-            res[cur.name] = cur.value;
-            return res;
+    const target = event.target
+    if(target.id == "employee-form") {
+    
+        const employee = Array.from(inputElementsAdd).reduce(
+            (res, cur) => {
+                res[cur.name] = cur.value;
+                return res;
         }, {}
-    )
-    console.log(employee)
+        )
+        employees.push(employee)
+        console.log(employees)
+ 
+    } else if (target.id == "employee_by_salary") {
+        const minMax = Array.from(inputElementsShowBySalary).reduce((res, e) => {
+            res[e.name] = +e.value
+            return res
+        }, {})
+        console.log(minMax)
+        const res = employees.filter(e => e.salary >= minMax.min_salary && e.salary < minMax.max_salary)
+        console.log(res)
+        showEmployees(res, containerEmployeesBySalary)
+    }
 }
+
+function showEmployees(employees, inside) {
+    const items = employees
+        .map(e => `<li> name: ${e.employee_name} email: ${e.email} birth date: ${e.birthDate} department: ${e.department}</li>`)
+        .join("")
+    inside.innerHTML = `<ul>${items}</ul>` 
+
+}
+
+
 function onChange(event) {
     if (event.target.name == "salary") {
         if(+event.target.value < 1000 || +event.target.value > 40000){
@@ -45,4 +88,7 @@ function addAlert(header, message, time) {
         alertmessage.innerHTML = ""
     
     }, time)
+
+
+
 }

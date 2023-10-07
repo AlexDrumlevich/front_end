@@ -21,3 +21,8 @@
     justify-content: space-around;
     margin-top: 10vh;
 }
+
+.active_button {
+    background-color: cornflowerblue;
+    color: brown;
+}

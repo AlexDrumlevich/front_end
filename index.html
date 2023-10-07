@@ -10,43 +10,73 @@
 </head>
 
 <body>
+    <section class="control_buttons_section" >
+        <button class="control_button" tag="add" onclick="show(event)">Add</button>
+        <button class="control_button" tag="show_all" onclick="show(event)">Show all</button>
+        <button class="control_button" tag="show_by_salary" onclick="show(event)">Show by salary</button>
+    </section>
+
     <div id="alert_div" hidden>
         <header id="alert_header"></header>
         <label id="allert_message"></label>
     </div>
-<form id="employee-form" onsubmit="onSubmit(event)" class="form-class">
-    <div class="two-inputs">
-        <input type="text" name="employee_name" required placeholder="Enter employee name">
-        <input type="email" name="email" placeholder="Enter email" required>
-    </div>
-<div class="date-label">
-    <label>Enter birthdate</label>
-    <input type="date" name="birthDate" onchange="onChange(event)" required placeholder="birthdate">
-</div>
-<div class="two-inputs">
-    <select name="department" required>
-        <option value hidden selected disabled>
-            --Select Department--
-        </option>
-        <option value="QA">QA</option>
-        <option value="Development">Development</option>
-        <option value="Management">Management</option>
-        <option value="Audit">Audit</option>
-    </select>
 
-        <input type="number" name="salary" placeholder="Enter salary"
-        onchange="onChange(event)" required>
+        <!--**************  show_by_salary ******************-->
+    <section class="main_menu_sections" id="show_by_salary_section" tag="show_by_salary" hidden>
+  
+        <form id="employee_by_salary" onsubmit="onSubmit(event)" class="form-class">
+            <div class="two-inputs">
+                <input type="number" name="min_salary" required placeholder="Enter min salary">
+                <input type="number" name="max_salary" placeholder="Enter max salary" required>
+            </div>
+            <div class="buttons">
+                <button type="submit" id="submit_show_by_salary">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+        <div id="container_employees_by_salary">
 
-    
-</div>
-<div class="buttons">
-    <button type="submit">Submit</button>
-    <button type="reset">Reset</button>
-</div>
+        </div>
+    </section>
 
+        <!--**************  show_all ******************-->
+    <section class="main_menu_sections"  tag="show_all" hidden>
+        <div id="container_employees_all">
 
+        </div>
+    </section>
 
-</form>
+         <!--**************  add ******************-->
+    <section class="main_menu_sections" id="add_section" tag="add" hidden>
+        <form id="employee-form" onsubmit="onSubmit(event)" class="form-class">
+            <div class="two-inputs">
+                <input type="text" name="employee_name" required placeholder="Enter employee name">
+                <input type="email" name="email" placeholder="Enter email" required>
+            </div>
+        <div class="date-label">
+            <label>Enter birthdate</label>
+            <input type="date" name="birthDate" onchange="onChange(event)" required placeholder="birthdate">
+        </div>
+        <div class="two-inputs">
+            <select name="department" required>
+                <option value hidden selected disabled>
+                    --Select Department--
+                </option>
+                <option value="QA">QA</option>
+                <option value="Development">Development</option>
+                <option value="Management">Management</option>
+                <option value="Audit">Audit</option>
+            </select>
+                <input type="number" name="salary" placeholder="Enter salary"
+                onchange="onChange(event)" required>
+        </div>
+        <div class="buttons">
+            <button type="submit" id="submit_add">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+
+        </form>
+</section>
 <script src="src/form.js"></script>
 </body>
 
