@@ -21,6 +21,8 @@ export class SalariesForm {
             processSalariesFun(salariesObj);
         })
     }
+    
+    
    onChangeSalaryFrom() {
     this.#salaryFromInputElement.addEventListener("change", (event) => {
         const value = +event.target.value;
